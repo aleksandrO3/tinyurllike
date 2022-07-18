@@ -7,7 +7,17 @@ r = Redis(host='localhost', port=6379, db=0)
 url = "http://127.0.0.1:5000/"
 
 
-def setLink(link, time):  
+def setLink(data):  
+    if 'link' in data.keys():
+        link = data['link']
+    else:
+        return {'encoded_link': 'empty link was sent'}
+    
+    if 'time' in data.keys() and not data['time'] == 0:
+        time = data['time']
+    else:
+        time = 1
+    
     code = generate_code(link)
     time = calculate_time(time)
     r.set(code, link, time)
