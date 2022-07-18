@@ -1,0 +1,7 @@
+Standart Libraries
+    json
+    string
+    random
+External Libraries
+    redis
+    flask
